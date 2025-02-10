@@ -1,7 +1,8 @@
 ## App Logo
 Click on a logo to download the latest version of the app apk file:
 
-<a href="https://github.com/ArpitAswal/WanderStay/releases/download/v1.0.0/WanderStay.apk"> ![ic_launcher](https://github.com/user-attachments/assets/ae14f7dc-567c-4074-b86a-81aca50c71b0)</a>
+<a href="https://github.com/ArpitAswal/WanderStay/releases/download/v1.0.0/WanderStay.apk"> ![app_logo](https://github.com/user-attachments/assets/ca738837-3753-4ffb-ab1b-4e7413f39179)
+</a>
 
 # Project Title: WanderStay
 
@@ -19,6 +20,8 @@ The app allows users to search and explore rental stay places listed by vendors 
 
 - Categorized listings such as Surfing activity stays, Wooden houses, Amazing view places, Houseboats, etc.
 
+#### Map Screen
+
 - Integrated Google Map displaying location markers for available places, allowing users to visually identify service coverage areas.
 
 - Tapping on a marker reveals essential details like images, addresses, and ratings in a pop-up window.
@@ -31,13 +34,13 @@ The app allows users to search and explore rental stay places listed by vendors 
 
 #### Wishlist Screen
 
-- Allows users to save their favourite stay places for future reference.
+- Allows users to see their favourite stay places for future reference.
 
 - Helps users plan and compare multiple locations before making a reservation decision.
 
 #### Message Screen
 
-###### Contains chat sections where users can communicate with:
+Contains chat sections where users can communicate with:
 
 - Support Team (for help and queries)
 
@@ -47,7 +50,7 @@ The app allows users to search and explore rental stay places listed by vendors 
 
 - WanderStay Service Team
 
-(These four screens are managed via a bottom navigation bar)
+(These five screens are are main screens and managed via a bottom navigation bar)
 
 #### Place Detail Screen
 
@@ -113,29 +116,51 @@ To run this project locally:
 
 - User has to provide the access of getting location to get the Google Map service on app, so they can easily see the stay locations and their current location.
 
+- we have to link the google and email provider to sign in with same email and by sign in with facebook I don't have a access of getting a email so I built a temporary logic with the help of shared preferences.
+
 ## Usage Flow
 
 #### Launch App:
 
-- Displays the SplashScree with the app logo, name, and motto.
+- Displays the SplashScreen with the app logo, name, and motto.
+
+https://github.com/user-attachments/assets/9a289c0d-5b23-4b84-b49e-70d76397a4a3
 
 #### Guest Access (Without Sign-In):
 
 - Users can only access the Explore Screen (limited functionality) and the Account Screen (for sign-in/sign-up options).
-
+  
 - Limited access prevents users from viewing full location details, using search functionality, or checking reservation status.
+  
+  ![photo_2_2025-02-10_16-40-53](https://github.com/user-attachments/assets/2d6cbb46-104a-4cf4-a06e-e09e19170cb8)
+
+  https://github.com/user-attachments/assets/7ae1328b-45b4-4b25-b175-91e4b437506c
+  
+  ![photo_2025-02-10_16-47-22](https://github.com/user-attachments/assets/655c1e67-fd44-4b39-8af7-3080e17112e8)
 
 #### After Sign-In:
 
-- Users gain access to the four main screens (Explore, Wishlist, Messages, Profile).
+- Users gain access to the five main screens (Explore, Wishlist, Google Map, Messages, Profile).
 
-- Viewing Stay Locations on Google Maps:
+- Viewing Stay Locations on Google Maps by tapping on a markers
 
-- Users must tap the "View on Map" button in the Explore screen.
+https://github.com/user-attachments/assets/f6f6e7a2-520b-44a3-a335-9e7c3be4447b
+
+![photo_3_2025-02-10_16-40-53](https://github.com/user-attachments/assets/539b7087-c5b6-4d72-a311-17d99817f6a3)
+
+![photo_4_2025-02-10_16-40-53](https://github.com/user-attachments/assets/0a4475a7-e43d-424a-82bc-dd679d7be528)
+
+![photo_2025-02-10_16-55-16](https://github.com/user-attachments/assets/c45bd87e-3bdc-4ddb-a9ff-a674a340cece)
+
+https://github.com/user-attachments/assets/2b64408e-0641-4cf4-97eb-1a6abac07f99
+
+https://github.com/user-attachments/assets/b7761718-6586-45e5-80ea-a65cd9fc26eb
 
 #### Viewing Place Details:
 
-- Users can access the Place Detail Screen by selecting a stay place from Explore, Wishlist, or Google Map Markers.
+- Users can access the Place Detail Screen by selecting a stay place from Explore and Wishlist.
+
+https://github.com/user-attachments/assets/1b443f9e-7fe2-40a7-82f1-7cb289854351
 
 ## Tech Stack
 

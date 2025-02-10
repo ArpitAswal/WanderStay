@@ -112,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Initialize the animation controller with a duration of 2 seconds.
     _controller = AnimationController(
       vsync: this, // vsync is required for the animation controller.
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 1),
     );
 
     // Create a fade-in animation for the logo.
@@ -139,7 +139,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
 
     // Navigate to the HomeScreen after 4 seconds.
-    Timer(const Duration(seconds: 4), () {
+    Timer(const Duration(seconds: 3), () {
       _controller.reverse().whenComplete(() {
         if (mounted) {
           // Check if the widget is still mounted to avoid errors.

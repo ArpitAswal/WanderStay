@@ -17,6 +17,7 @@ class MessageScreen extends StatefulWidget {
 }
 
 class _MessageScreenState extends State<MessageScreen> {
+  final Set<int> _animatedIndices = {}; // Keep track of animated indices
 
   @override
   Widget build(BuildContext context) {
@@ -42,24 +43,41 @@ class _MessageScreenState extends State<MessageScreen> {
                     itemCount: provider.isLoading ? 8 : provider.allMessages.isEmpty ? 1 : provider.allMessages.length, // to display the no of items when then all messages is empty or not.
                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                     itemBuilder: (context, index) {
-                      return provider.isLoading ?
-                      _buildShimmerLoadingItem(context) // Call the shimmer loading builder.
-                          : provider.allMessages.isEmpty
-                          ? SizedBox(
-                             height: MediaQuery.of(context).size.height,
-                            width: MediaQuery.of(context).size.width,
-                            child: const Center(
-                            child: Text("No messages done yet!.")),
-                          )
-                          : (index % 2 == 0) // Use modulo for alternating animations.
-                          ? SlideInLeft( // Slide in from the left.
-                          delay: const Duration(milliseconds: 100),
-                          duration: const Duration(milliseconds: 1000),
-                          child: _buildMessageItem(provider.allMessages[index])) // Build the message item.
-                          : SlideInRight( // Slide in from the right.
-                          delay: const Duration(milliseconds: 100),
-                          duration: const Duration(milliseconds: 1000),
-                          child: _buildMessageItem(provider.allMessages[index])); // Build the message item.
+                      if (provider.isLoading) {
+                        return _buildShimmerLoadingItem(context);
+                      } else if (provider.allMessages.isEmpty) {
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: const Center(
+                              child: Text("No messages done yet!")),
+                        );
+                      } else {
+                        // Check if the item has already been animated
+                        bool isAlreadyAnimated = _animatedIndices.contains(index);
+
+                        // Build the message item with animation only if it hasn't been animated yet
+                        Widget messageItem = _buildMessageItem(provider.allMessages[index]);
+
+                        if (!isAlreadyAnimated) {
+                          _animatedIndices.add(index); // Mark the item as animated
+
+                          if (index % 2 == 0) {
+                            messageItem = SlideInLeft(
+                              delay: const Duration(milliseconds: 100),
+                              duration: const Duration(milliseconds: 1000),
+                              child: messageItem,
+                            );
+                          } else {
+                            messageItem = SlideInRight(
+                              delay: const Duration(milliseconds: 100),
+                              duration: const Duration(milliseconds: 1000),
+                              child: messageItem,
+                            );
+                          }
+                        }
+                        return messageItem;
+                      }// Build the message item.
                     },
                   ),
                 ),

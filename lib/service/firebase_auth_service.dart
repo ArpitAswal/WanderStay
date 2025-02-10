@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:wander_stay/service/shared_preference_service.dart';
+import 'package:wander_stay/utils/singleton/snackbar.dart';
 
 class FirebaseAuthServices {
   late FacebookAuth _fbInstance; // Instance of FacebookAuth
@@ -197,11 +198,9 @@ class FirebaseAuthServices {
   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut(); // Sign out from Firebase Auth
-      await _googleSignIn.signOut();       // Sign out from Google (if signed in)
-      await _fbInstance.logOut();  // Sign out from Facebook (if signed in)
       _pref.data.clear();                   // Clear shared preferences
     } catch (e) {
-      throw ("Sign out failed: $e"); // Throw exception if sign out fails
+      SingletonSnackbar().showSnackbar("Sign out failed: $e"); // Throw exception if sign out fails
     }
   }
 }
